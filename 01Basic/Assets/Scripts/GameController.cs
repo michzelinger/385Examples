@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
-    private int maxPlanes = 5;
-    private int numberOfPlanes = 0;
+    private int maxPlanes = 10;
+    public int numberOfPlanes = 0;
     // Start is called before the first frame update
     void Start()
     {

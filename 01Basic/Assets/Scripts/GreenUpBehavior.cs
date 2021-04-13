@@ -2,10 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Text;
+using System;
 
 public class GreenUpBehavior : MonoBehaviour
 {
 
+   public float arrowDamage = 100f;
    public Text mEnemyCountText = null;
    public float mPlanesTouched = 0;
    public float speed = 20f;
@@ -81,16 +84,29 @@ public class GreenUpBehavior : MonoBehaviour
       }
       transform.position = pos;
    }
-   private void OnTriggerEnter2D(Collider2D collision)
+  /*private void OnTriggerEnter2D(Collider2D collision)
    {
       Debug.Log("Here x Plane: OnTriggerEnter2D");
       mPlanesTouched++;
       mEnemyCountText.text = "Planes touched " + mPlanesTouched;
       Destroy(collision.gameObject);
       mGameGameController.EnemyDestroyed();
+   }*/
+
+   private void OnCollisionEnter2D(Collision2D collision)
+   {
+      GameObject enemy = GameObject.FindGameObjectWithTag("Enemy");
+      if(enemy.tag == "Enemy")
+      {
+         Debug.Log("Here x Plane: OnTriggerEnter2D");
+         mPlanesTouched++;
+         mEnemyCountText.text = "Planes touched " + mPlanesTouched;
+         Destroy(collision.gameObject);
+         mGameGameController.EnemyDestroyed();
+      }
    }
 
-   private void OnTriggerStay2D(Collider2D collision)
+   private void OnCollisionStay2D(Collision2D collision)
    {
       Debug.Log("Plane On TriggerStay");
    }

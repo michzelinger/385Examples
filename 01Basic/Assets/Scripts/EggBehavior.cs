@@ -5,8 +5,7 @@ using UnityEngine;
 
 public class EggBehavior : MonoBehaviour
 {
-
-   // private Camera mainCamera;
+    public float eggDamage = 25f;
     public float kEggSpeed = 40f;
     
     private const int kLifeTime = 300;
@@ -18,7 +17,7 @@ public class EggBehavior : MonoBehaviour
         mLifeCount--;
     }
     void Start()
-    {
+    {   
         mLifeCount = kLifeTime;
     }
     // Update is called once per frame
@@ -26,5 +25,21 @@ public class EggBehavior : MonoBehaviour
     {
         transform.position += transform.up * (kEggSpeed * Time.smoothDeltaTime);
     }
+    
+     private void OnTriggerEnter2D(Collider2D collision)
+   {
+      
+      if(collision.gameObject.tag == "Enemy")
+      {
+            EnemyBehavior enemy = collision.gameObject.GetComponent<EnemyBehavior>();
+            Debug.Log("Here x Plane: OnTriggerEnter2D");
+            enemy.TakeDamage(eggDamage);
+       //  mPlanesTouched++;
+     //    mEnemyCountText.text = "Planes touched " + mPlanesTouched;
+           // enemyKill.TakeDamage(eggDamage);
+            Destroy(gameObject);
+      }
+   }
+    
 
 }
