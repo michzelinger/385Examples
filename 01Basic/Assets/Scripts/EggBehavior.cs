@@ -7,7 +7,7 @@ public class EggBehavior : MonoBehaviour
 {
 
    // private Camera mainCamera;
-    public const float kEggSpeed = 40f;
+    public float kEggSpeed = 40f;
     
     private const int kLifeTime = 300;
     private int mLifeCount = 0;

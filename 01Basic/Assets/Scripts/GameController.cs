@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
+    private int maxPlanes = 5;
+    private int numberOfPlanes = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,5 +22,23 @@ public class GameController : MonoBehaviour
             Application.Quit();
 #endif
         }
+        if(numberOfPlanes < maxPlanes)
+        {
+
+            CameraSupport s = Camera.main.GetComponent<CameraSupport>();
+            
+            GameObject e = Instantiate(Resources.Load("Prefabs/Enemy") as GameObject);
+            Vector3 pos;
+            pos.x = s.GetWorldBound().min.x + Random.value * s.GetWorldBound().size.x;
+            pos.y = s.GetWorldBound().min.y + Random.value * s.GetWorldBound().size.y;
+            pos.z = 0;
+            e.transform.localPosition = pos;
+            numberOfPlanes++;
+        }
+    }
+    
+    public void EnemyDestroyed()
+    {
+        numberOfPlanes--;
     }
 }
