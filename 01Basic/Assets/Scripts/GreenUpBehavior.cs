@@ -115,18 +115,12 @@ public class GreenUpBehavior : MonoBehaviour
          if(Input.GetKey(KeyCode.W))
          {
             currentSpeed += 0.5f;
-            pos += ((currentSpeed * Time.smoothDeltaTime) * transform.up);
-            rb.velocity = transform.up * currentSpeed;
-            
          } 
          if(Input.GetKey(KeyCode.S))
          {
             currentSpeed -= 0.5f;
-            pos -= ((currentSpeed * Time.smoothDeltaTime) * transform.up);
-            rb.velocity = transform.up * currentSpeed;
-            //pos += ((speed * Time.smoothDeltaTime) * transform.up);
-            
          }
+         
         /* if (Input.GetKey(KeyCode.W))
          {
             if(speed < maxSpeed)
@@ -148,16 +142,17 @@ public class GreenUpBehavior : MonoBehaviour
 
          if (Input.GetKey(KeyCode.D))
          {
-            rb.velocity = new Vector2(currentSpeed * transform.up.x, currentSpeed * transform.up.y);
+            //rb.velocity = new Vector2(currentSpeed * transform.up.x, currentSpeed * transform.up.y);
             Debug.Log("velocity: " + rb.velocity);
             transform.Rotate(transform.forward, -mHeroRotateSpeed * Time.smoothDeltaTime);
          }
 
          if (Input.GetKey(KeyCode.A))
          {
-            rb.velocity = new Vector2(currentSpeed * transform.up.x, currentSpeed * transform.up.y);
+            //rb.velocity = new Vector2(currentSpeed * transform.up.x, currentSpeed * transform.up.y);
             transform.Rotate(transform.forward, mHeroRotateSpeed * Time.smoothDeltaTime);
          }
+         rb.velocity = transform.up * currentSpeed;
       }
       transform.position = pos;
       if (outOfScreen == false && Time.time >= eggTimeStamp && Input.GetKey(KeyCode.Space))
