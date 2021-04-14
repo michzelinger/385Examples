@@ -64,4 +64,5 @@ public class GameController : MonoBehaviour
         numberOfEnemiesKilled++;
         mEnemiesDestroyed.text = "Number of Enemies Killed " + numberOfEnemiesKilled;
     }
+
 }

@@ -7,11 +7,13 @@ using System;
 
 public class GreenUpBehavior : MonoBehaviour 
 {
-   public int heroHealth = 3;
+   public int heroHealth;
+   public int maxHealth = 3;
    public Text mGameControlText = null;
    private Rigidbody2D rb;
    public float arrowDamage = 100f;
    public Text mEnemyCountText = null;
+   public Text mHeroDeathText = null;
    
    public float mPlanesTouched = 0;
    public float speed = 20f;
@@ -35,9 +37,11 @@ public class GreenUpBehavior : MonoBehaviour
    public bool mFollowMousePosition = true;
 
    public bool mHeroHealthControl = false;
+   public Text mHeroHealthText = null;
    // Start is called before the first frame update
    void Start()
    {
+      heroHealth = maxHealth;
       currentSpeed = speed;
       //accelerationPerUpdate = acceleration / 50000;
       rb = GetComponent<Rigidbody2D>();
@@ -65,6 +69,17 @@ public class GreenUpBehavior : MonoBehaviour
       if(Input.GetKeyDown(KeyCode.G))
       {
          mHeroHealthControl = !mHeroHealthControl;
+         if(mHeroHealthControl)
+         { 
+            mHeroDeathText.text = "Hero Death: Enabled";
+            heroHealth = 3;
+            mHeroHealthText.text = "Hero Health: " + heroHealth;
+         }
+         else 
+         {
+             mHeroDeathText.text = "Hero Death: Disabled";
+             mHeroHealthText.text = "";
+         }
       }
 
       Vector3 pos = transform.position;
@@ -207,13 +222,16 @@ public class GreenUpBehavior : MonoBehaviour
          if(mHeroHealthControl == true)
          {
             Debug.Log("Hero Health" + heroHealth);
-            if(heroHealth != 0)
+            if(heroHealth > 1)
             {
                heroHealth -= 1;
+               mHeroHealthText.text = "Hero Health: " + heroHealth;
                Debug.Log("Hero Health" + heroHealth);
             }
             else
             {
+               heroHealth -= 1;
+               mHeroHealthText.text = "Hero Health: " + heroHealth;
                Debug.Log("Hero Health" + heroHealth);
                Destroy(gameObject);
             }
@@ -244,11 +262,11 @@ public class GreenUpBehavior : MonoBehaviour
    {
       if(mFollowMousePosition == true)
       {
-         mGameControlText.text = "Arrow Control Mode: Follow Mouse Position";
+         mGameControlText.text = "Hero Control Mode: Follow Mouse Position";
       }
       else
       {
-         mGameControlText.text = "Arrow Control Mode: Keyboard Mode";
+         mGameControlText.text = "Hero Control Mode: Keyboard Mode";
       }
    }
    
