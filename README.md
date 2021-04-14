@@ -2,4 +2,4 @@
 
 https://michzelinger.github.io/385Examples/
 
-https://michzelinger.github.io/385Examples/hero_game_with_egg_kill
+https://michzelinger.github.io/385Examples/hero_game_work
