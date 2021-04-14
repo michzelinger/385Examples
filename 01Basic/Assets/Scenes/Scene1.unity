@@ -330,8 +330,8 @@ GameObject:
   - component: {fileID: 535818846}
   - component: {fileID: 535818845}
   - component: {fileID: 535818847}
-  - component: {fileID: 535818848}
   - component: {fileID: 535818849}
+  - component: {fileID: 535818848}
   m_Layer: 0
   m_Name: GreenUp
   m_TagString: Untagged
@@ -416,6 +416,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a6796fa23187744ea5277441a056981, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  arrowDamage: 100
   mEnemyCountText: {fileID: 738059155}
   mPlanesTouched: 0
   speed: 20
@@ -434,7 +435,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -464,7 +465,7 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
@@ -571,7 +572,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -174, y: 94}
+  m_AnchoredPosition: {x: -395, y: -245}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &738059155
@@ -607,7 +608,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: New Text
+  m_Text: Planes touched 0
 --- !u!222 &738059156
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -645,6 +646,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53632db90b5c6784f9616d177f1bac7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  numberOfPlanes: 0
 --- !u!4 &1217586769
 Transform:
   m_ObjectHideFlags: 0

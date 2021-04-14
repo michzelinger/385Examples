@@ -3,22 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
+
 public class EggBehavior : MonoBehaviour
 {
     public float eggDamage = 25f;
-    public float kEggSpeed = 40f;
-    
-    private const int kLifeTime = 300;
-    private int mLifeCount = 0;
+    public float kEggSpeed = 40f;    
+    //private const int kLifeTime = 300;
+    //private int mLifeCount = 0;
+
+    private GameController mGameGameController = null;
     // Start is called before the first frame update
     void OnBecameInvisible()
     {
-        Destroy(transform.gameObject);
-        mLifeCount--;
+        Destroy(gameObject);
+        mGameGameController.EggDestroyed();
     }
     void Start()
     {   
-        mLifeCount = kLifeTime;
+        mGameGameController = FindObjectOfType <GameController>();
+        //mLifeCount = kLifeTime;
     }
     // Update is called once per frame
     void Update()

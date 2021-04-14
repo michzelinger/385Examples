@@ -18,11 +18,13 @@ public class EnemyBehavior : MonoBehaviour
     {
         
     }
-    private void UpdateColor()
+    private void UpdateColor(float amount)
     {
+        float decreaseAmount = amount / 100f;
         SpriteRenderer s = GetComponent<SpriteRenderer>();
+        
         Color c = s.color;
-        const float delta = 0.01f;
+        float delta = decreaseAmount;
         c.r -= delta;
         c.a -= delta;
         s.color = c;
@@ -35,10 +37,12 @@ public class EnemyBehavior : MonoBehaviour
             s.color = Color.white;
         }
     }
+    
      public void TakeDamage(float amount)
      {
-         Debug.Log("Enemy Health: " + enemyHealth);
+         
          enemyHealth -= amount;
+         Debug.Log("Enemy Health: " + enemyHealth);
          
          if (enemyHealth <= 0)
          {
@@ -46,7 +50,7 @@ public class EnemyBehavior : MonoBehaviour
          }
          else
          {
-            UpdateColor();
+            UpdateColor(amount);
          }
      }
      void Die()
@@ -54,4 +58,5 @@ public class EnemyBehavior : MonoBehaviour
          Destroy(gameObject);
          mGameGameController.EnemyDestroyed();
      }
+     
 }
